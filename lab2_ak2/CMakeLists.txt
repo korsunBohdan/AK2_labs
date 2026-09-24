@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_library(calculator STATIC calculator.cpp calculator.h)
 
 #Створення виконуваного файлу завдяки main.cpp
-add_executable(app main.cpp)
+add_executable(cmd_parce_app main.cpp)
 
 #Зв'язування виконуваного файлу зі створеною бібліотекою
 target_link_libraries(app PRIVATE calculator)

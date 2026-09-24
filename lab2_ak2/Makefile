@@ -1,9 +1,10 @@
 #Оголошення змінної для компілятора C++
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++11
+CXXFLAGS = -Wall -Wextra -std=c++17
+TARGET = cmd_parce_and_calculator_app
 
 #Головна ціль для побудови проекту
-all: app
+all: $(TARGET)
 
 #Створення статичної бібліотеки libcalculator.a
 libcalculator.a: calculator.o
@@ -18,8 +19,9 @@ main.o: main.cpp calculator.h
 	$(CXX) $(CXXFLAGS) -c main.cpp -o main.o
 
 #Лінкування виконуваного файлу зі статичною бібліотекою
-app: main.o libcalculator.a
-	$(CXX) $(CXXFLAGS) main.o -L. -lcalculator -o app
+$(TARGET): main.o libcalculator.a
+	$(CXX) $(CXXFLAGS) main.o -L. -lcalculator -o $(TARGET)
 
 #Секція очищення скомпільованих файлів
-clean: rm -f *.o *.a app
+clean:
+	rm -f *.o *.a $(TARGET)
